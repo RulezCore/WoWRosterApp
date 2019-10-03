@@ -3,11 +3,11 @@ from django.db import models
 # Create your models here.
 class Raid(models.Model):
     NAMES = (
-        ('onyxia': 'onyxia'),
-        ('mc': 'molten core')
+        ('onyxia', 'onyxia'),
+        ('mc', 'molten core')
     )
 
-    name = models.CharField(choices=NAMES, verbose_name="Nombre")
+    name = models.CharField(choices=NAMES, verbose_name="Nombre", max_length=150)
     day = models.DateField(verbose_name="Dia del evento")
     notes = models.TextField(blank=True, null=True, verbose_name="Notas")
 
@@ -22,33 +22,34 @@ class Raid(models.Model):
 
 class Member(models.Model):
     TYPE = (
-        ('raid': 'raid'),
-        ('trial': 'trial'),
-        ('member': 'member'),
-        ('kicked': 'kicked')
+        ('oficial', 'oficial'),
+        ('raid', 'raid'),
+        ('trial', 'trial'),
+        ('member', 'member'),
+        ('kicked', 'kicked')
     )
 
     ROLES = (
-        ('tank': 'tank'),
-        ('dps': 'dps'),
-        ('healer': 'healer'),
-        ('hybrid': 'hybrid')
+        ('tank', 'tank'),
+        ('dps', 'dps'),
+        ('healer', 'healer'),
+        ('hybrid', 'hybrid')
     )
 
     CLASES = (
-        ('warlock': 'Brujo'),
-        ('hunter': 'Cazador'),
-        ('druid': 'Druida'),
-        ('warrior': 'Guerrero'),
-        ('mage': 'Mago'),
-        ('rogue': 'Picaro'),
-        ('priest': 'Sacerdote')
+        ('warlock', 'Brujo'),
+        ('hunter', 'Cazador'),
+        ('druid', 'Druida'),
+        ('warrior', 'Guerrero'),
+        ('mage', 'Mago'),
+        ('rogue', 'Picaro'),
+        ('priest', 'Sacerdote')
     )
 
     name = models.CharField(max_length=90, verbose_name="Nickname", unique=True)
-    rank = models.CharField(choices=TYPE, verbose_name="Rango")
-    role = models.CharField(choices=ROLES, verbose_name="Rol")
-    clas = models.CharField(choices=CLASES, verbose_name="Clase")
+    rank = models.CharField(choices=TYPE, verbose_name="Rango", max_length=150)
+    role = models.CharField(choices=ROLES, verbose_name="Rol", max_length=150)
+    clas = models.CharField(choices=CLASES, verbose_name="Clase", max_length=150)
     joined = models.DateField(blank=True, null=True, verbose_name="Fecha de entrada")
     notes = models.TextField(blank=True, null=True, verbose_name="Notas")
 
@@ -63,7 +64,7 @@ class Member(models.Model):
 
 class RaidAssistance(models.Model):
     member = models.ForeignKey(Member, verbose_name="Miembro", on_delete=models.CASCADE)
-    raid = models.ForeignKey(Raid, verbose_name="Raid", on_delete=models.CASCADE)
+    raid = models.ForeignKey(Raid, verbose_name="Raid", on_delete=models.CASCADE, related_name='raid_assistances')
     assistance = models.BooleanField(default=False, verbose_name="Asistencia")
 
     class Meta:
