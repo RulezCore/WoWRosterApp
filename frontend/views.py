@@ -1,5 +1,7 @@
 from django.shortcuts import render, HttpResponse
+from api.models import Member
 
 
 def home(request):
-    return HttpResponse("Hola k ase usted")
+    members = Member.objects.all()
+    return render(request, "frontend/home.html", {'members': members})
