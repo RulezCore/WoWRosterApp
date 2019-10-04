@@ -4,8 +4,12 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+autopep8 = "*"
 
 [packages]
+djangorestframework = "==3.10.3"
+Django = "==2.2.6"
+Markdown = "==3.1.1"
 
 [requires]
 python_version = "3.7"
