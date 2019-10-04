@@ -16,8 +16,10 @@ class Raid(models.Model):
         verbose_name_plural = "Raids"
         ordering = ['-day']
 
+
     def __str__(self):
        return self.name
+
 
 
 class Member(models.Model):
@@ -71,3 +73,23 @@ class RaidAssistance(models.Model):
         verbose_name = "Assistance"
         verbose_name_plural = "Assistances"
         unique_together = ['member', 'raid']
+
+    def __str__(self):
+        return self.member.name
+
+
+def create_raid_assistance(sender, instance, created, **kwargs):
+    if created:
+        members = Member.objects.all()
+
+        for member in members:
+            raid_assistance = RaidAssistance()
+            if member.rank != 'member' and member.rank != 'kicked':
+                raid_assistance.member = member
+            raid_assistance.raid = instance
+            raid_assistance.save()
+
+
+from django.db.models.signals import post_save
+
+post_save.connect(create_raid_assistance, sender=Raid)
