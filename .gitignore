@@ -7,6 +7,10 @@ __pycache__/
 # C extensions
 *.so
 
+# SCSS
+frontend/static/frontend/css/main.scss
+frontend/static/frontend/css/main.css.map
+
 # Distribution / packaging
 .Python
 build/

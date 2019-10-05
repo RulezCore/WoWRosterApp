@@ -1,10 +1,13 @@
-from frontend.views import home
+
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
 # API VIEWS
 from api import views
+
+# FRONTEND VIEWS
+from frontend.views import home, raids, members
 
 # ROUTER
 router = routers.DefaultRouter()
@@ -19,5 +22,7 @@ urlpatterns = [
 
 # FRONTEND VIEWS
 urlpatterns += [
-    path('', home),
+    path('', home, name="home"),
+    path('raids/', raids, name="raids"),
+    path('members/', members, name="members")
 ]

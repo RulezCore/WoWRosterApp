@@ -2,23 +2,14 @@
 
 {% block content %} 
     
-  <div class="container">
+  <div class="container" id="homeContainer">
     <div class="row">
-    {% for raid in raids %} 
-      <div class="card" style="width: 18rem; text-align:center;">
-        {% comment %} <img src="..." class="card-img-top" alt="..."> {% endcomment %}
-        <div class="card-body">
-            <h5 class="card-title">{{raid.name}}</h5>
-            <hr>
-            <h6>{{ raid.day }}</h6>
-            {% if raid.notes %}
-              <h6>Notas: </h6>
-              <p>{{raid.notes}}</p>
-            {% endif %}
-            <a href="#" class="btn btn-primary">Informacion</a>
-        </div>
+      <div class="col-12" id="contenido">
+        <h2>Bienvenido al area de administracion</h2>
+        <hr>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, voluptates. Dolor sunt ratione repellendus voluptate soluta expedita, similique, aliquam quam porro magni perferendis sint. Pariatur quae veniam tenetur aliquid esse.</p>
+        <a href=""><button class="btn btn-primary">Acceder</button></a>
       </div>
-    {% endfor %}
     </div>
   </div>
     
