@@ -29,7 +29,9 @@
           <a class="nav-item nav-link {% if request.path == '/members/' %}active {% endif %}" href="{% url 'members' %}">
             <i class="fas fa-users"></i> Members
           </a>
-          <a class="nav-item nav-link ml-4 active" href="#"><i class="fas fa-sign-out-alt"></i> LogOut</a>
+          <a class="nav-item nav-link ml-4 active" href="{% url 'logout' %}">
+            <i class="fas fa-sign-out-alt"></i> LogOut
+          </a>
       </div>
     </div>
     </div>
