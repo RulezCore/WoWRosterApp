@@ -1,13 +1,34 @@
 from django.shortcuts import render, HttpResponse, redirect
+from django.contrib.auth import authenticate
 from django.contrib.auth import logout as do_logout
+from django.contrib.auth import login as do_login
+from django.contrib.auth.forms import AuthenticationForm
 from api.models import Member, Raid
 
 
 def home(request):
     if request.user.is_authenticated:
         return redirect('/raids')
-    else:
-        return render(request, "frontend/home.html")
+    form = AuthenticationForm()
+    if request.method == "POST":
+        # Añadimos los datos recibidos al formulario
+        form = AuthenticationForm(data=request.POST)
+        # Si el formulario es válido...
+        if form.is_valid():
+            # Recuperamos las credenciales validadas
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            # Verificamos las credenciales del usuario
+            user = authenticate(username=username, password=password)
+
+            # Si existe un usuario con ese nombre y contraseña
+            if user is not None:
+                # Hacemos el login manualmente
+                do_login(request, user)
+                # Y le redireccionamos a la portada
+                return redirect('/')
+    return render(request, "frontend/home.html", {'form':form})
 
 def raids(request):
     return render(request, 'frontend/raids.html')

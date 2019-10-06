@@ -16,6 +16,7 @@
         <form method="post">
           {% csrf_token %}
           {{ form.as_p }}
+
           <button type="submit">Login</button>
         </form>
       </div>
@@ -32,15 +33,17 @@
         <h2>Bienvenido al area de administracion</h2>
         <hr>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, voluptates. Dolor sunt ratione repellendus voluptate soluta expedita, similique, aliquam quam porro magni perferendis sint. Pariatur quae veniam tenetur aliquid esse.</p>
-        <type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Acceder</button>
+        <type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="buttonModal">Acceder</button>
       </div>
     </div>
   </div>
-
-  <script>
-  $('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
-  })
-  </script>
     
+{% endblock %}
+
+{% block js %}
+  <script>
+    {% if form.errors %}
+      $('#exampleModal').modal('show')
+    {% endif %}
+  </script>
 {% endblock %}
