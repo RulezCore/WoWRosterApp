@@ -27,4 +27,69 @@ body {
 #homeContainer #contenido p {
   text-align: center;
 }
+
+#raidContainer {
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  grid-gap: 20px;
+}
+
+#raidContainer .card {
+  margin-left: 10px;
+  text-align: center;
+}
+
+#raidContainer .card hr {
+  margin: 10px;
+}
+
+#raidContainer .card .card-body {
+  padding: 10px;
+}
+
+#raidContainer .card .card-body .card-title {
+  text-transform: uppercase;
+}
+
+#raidContainer .card:first-of-type {
+  margin-left: 0;
+}
+
+#membersContainer {
+  margin-top: 50px;
+}
+
+#membersContainer .containerCards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+#membersContainer .containerCards .cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#membersContainer .containerCards .cards .card {
+  margin-left: 10px;
+}
+
+#membersContainer .containerCards .cards .card:first-of-type {
+  margin-left: 0;
+}
 /*# sourceMappingURL=main.css.map */

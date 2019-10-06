@@ -31,7 +31,8 @@ def home(request):
     return render(request, "frontend/home.html", {'form':form})
 
 def raids(request):
-    return render(request, 'frontend/raids.html')
+    raids = Raid.objects.all()
+    return render(request, 'frontend/raids.html', {'raids':raids})
 
 def members(request):
     members = Member.objects.all()
