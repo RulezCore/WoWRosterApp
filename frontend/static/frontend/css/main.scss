@@ -52,7 +52,17 @@ body {
 
 #containerRaidU {
   margin-top: 50px;
-}
+
+  .table {
+    .rankingT { 
+      @media screen and(max-width:550px) {
+        display: none;
+      }
+    }
+    
+    }
+  }
+
 
 // MEMBERS
 #membersContainer {

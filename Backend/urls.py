@@ -17,6 +17,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/v1/', include(router.urls)),
+    path('api/v1/assistance/', views.MarcarAsistenciaRaid.as_view()),
     path('logout', logout, name='logout')
 ]
 
@@ -25,6 +26,6 @@ urlpatterns = [
 urlpatterns += [
     path('', home, name="home"),
     path('raids/', raids, name="raids"),
-    path('raids/<id>',raid , name="raid"),
+    path('raids/<id>', raid, name="raid"),
     path('members/', members, name="members")
 ]

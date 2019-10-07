@@ -63,6 +63,12 @@ body {
   margin-top: 50px;
 }
 
+@media screen and (max-width: 550px) {
+  #containerRaidU .table .rankingT {
+    display: none;
+  }
+}
+
 #membersContainer {
   margin-top: 50px;
 }

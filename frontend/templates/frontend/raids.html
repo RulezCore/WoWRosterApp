@@ -8,14 +8,17 @@
         {% for raid in raids %}
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
           <div class="card h-100">
-            <img class="card-img-top" src="/static/frontend/img/raids/{{raid.name}}.jpg" alt="Card image cap">
-            <hr>
+            <a href="{% url 'raid' raid.id %}">
+              <img class="card-img-top" src="/static/frontend/img/raids/{{raid.name}}.jpg">
+            </a>
             <div class="card-body">
-                <h5 class="card-title">{{raid.name}}</h5>
+                <br><h5 class="card-title">{{raid.name}}</h5>
                 <h6 class="text-muted">{{raid.day}}</h6>
-                <p class="card-text">{{raid.notes}}</p>
+                <br>
+                {% comment %} <p class="card-text">{{raid.notes}}</p> {% endcomment %}
                 <a href="{% url 'raid' raid.id %}" class="btn btn-primary">Information</a>
             </div>
+            <br>
           </div>
         </div>
         {% endfor %}
