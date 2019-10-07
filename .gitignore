@@ -8,8 +8,8 @@ __pycache__/
 *.so
 
 # SCSS
-frontend/static/frontend/css/main.scss
-frontend/static/frontend/css/main.css.map
+# frontend/static/frontend/css/main.scss
+# frontend/static/frontend/css/main.css.map
 
 # Distribution / packaging
 .Python
