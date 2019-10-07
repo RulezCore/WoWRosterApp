@@ -14,13 +14,19 @@
     </tr>
   </thead>
   <tbody>
-    {% for raid in raid.raid_assistances.all %}
+    {% for assistance in raid.raid_assistances.all %}
     <tr>
-      <td style="font-weight:600">{{raid.member}}</td>
-      <th scope="row"><img src="/static/frontend/img/classes/{{raid.member.clas}}.jpg" alt=""></th>
-      <th scope="row"><img class="" src="/static/frontend/img/role/{{raid.member.role}}.png" alt="Card image cap" width="38px"></th>
-      <td>{{raid.member.rank}}</td>
-      <td><input type="checkbox" aria-label="Checkbox for following text input" {% if raid.assistance == True %} checked {% endif %}></td>
+      <td style="font-weight:600">{{assistance.member}}</td>
+      <th scope="row"><img src="/static/frontend/img/classes/{{assistance.member.clas}}.jpg" alt=""></th>
+      <th scope="row"><img class="" src="/static/frontend/img/role/{{assistance.member.role}}.png" width="38px"></th>
+      <td>{{assistance.member.rank}}</td>
+      <td>
+        <button id="b{{assistance.id}}" class="btn {% if assistance.assistance %}btn-success{% else %}btn-danger{% endif %}" onClick="setAssistance('{{assistance.id}}')">
+          {% if assistance.assistance %}<i class="fas fa-check-circle"></i>
+          {% else %}<i class="fas fa-times-circle"></i>{% endif %}
+        </button>
+        {% comment %} <input type="checkbox" aria-label="Checkbox for following text input" {% if assistance.assistance == True %} checked {% endif %}> {% endcomment %}
+      </td>
     </tr>
     {% endfor %}
 
@@ -29,4 +35,58 @@
   </div>
 </div>
 
+{% endblock %}
+
+{% block js %}
+<script>
+
+/* https://docs.djangoproject.com/en/1.8/ref/csrf/#ajax */
+function getCookie(name) {
+  var cookieValue = null;
+  if (document.cookie && document.cookie != '') {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = jQuery.trim(cookies[i]);
+      // Does this cookie string begin with the name we want?
+      if (cookie.substring(0, name.length + 1) == (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+
+function setAssistance(id){
+  var btn = $(`#b${id}`);
+  fetch(`/api/v1/assistance/`, {
+    method: 'POST',
+    credentials: "same-origin",
+    body: JSON.stringify({id: id}),
+    headers: {
+      "X-CSRFToken": getCookie("csrftoken"),
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+  })
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+    btn.removeClass('btn-success btn-danger');
+    btn.addClass('btn-secondary');
+    btn.html('<i class="fas fa-spinner fa-pulse"></i>');
+    setTimeout(() => {
+      if (data.assistance) {
+        btn.addClass('btn-success');
+        btn.html('<i class="fas fa-check-circle"></i>');
+      }
+      else {
+        btn.addClass('btn-danger'); 
+        btn.html('<i class="fas fa-times-circle"></i>');
+      }
+    }, 300);
+  });
+}
+</script>
 {% endblock %}
