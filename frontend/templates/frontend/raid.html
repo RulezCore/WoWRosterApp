@@ -1,0 +1,32 @@
+{% extends 'frontend/base.html' %}
+
+{% block  content %}
+<div class="container" id="containerRaidU">
+  <div class="row">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nickname:</th>
+      <th scope="col">Class:</th>
+      <th scope="col">Rol:</th>
+      <th scope="col">Ranking:</th>
+      <th scope="col">Assistance:</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for raid in raid.raid_assistances.all %}
+    <tr>
+      <td style="font-weight:600">{{raid.member}}</td>
+      <th scope="row"><img src="/static/frontend/img/classes/{{raid.member.clas}}.jpg" alt=""></th>
+      <th scope="row"><img class="" src="/static/frontend/img/role/{{raid.member.role}}.png" alt="Card image cap" width="38px"></th>
+      <td>{{raid.member.rank}}</td>
+      <td><input type="checkbox" aria-label="Checkbox for following text input" {% if raid.assistance == True %} checked {% endif %}></td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+  </div>
+</div>
+
+{% endblock %}

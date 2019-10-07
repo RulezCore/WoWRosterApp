@@ -7,7 +7,7 @@ from rest_framework import routers
 from api import views
 
 # FRONTEND VIEWS
-from frontend.views import home, raids, members, logout
+from frontend.views import home, raids, raid, members, logout
 
 # ROUTER
 router = routers.DefaultRouter()
@@ -25,5 +25,6 @@ urlpatterns = [
 urlpatterns += [
     path('', home, name="home"),
     path('raids/', raids, name="raids"),
+    path('raids/<id>',raid , name="raid"),
     path('members/', members, name="members")
 ]

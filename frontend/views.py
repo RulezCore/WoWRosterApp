@@ -34,6 +34,10 @@ def raids(request):
     raids = Raid.objects.all()
     return render(request, 'frontend/raids.html', {'raids':raids})
 
+def raid(request, id):
+    raid = Raid.objects.get(pk=id)
+    return render(request, 'frontend/raid.html', {'raid':raid})
+
 def members(request):
     members = Member.objects.all()
     return render(request, 'frontend/members.html', {'members': members})
