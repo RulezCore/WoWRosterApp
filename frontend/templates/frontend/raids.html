@@ -6,7 +6,8 @@
     <div class="container" id="raidContainer">
         <div class="row">
         {% for raid in raids %}
-          <div class="card" style="width: 18rem;">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+          <div class="card">
             <img class="card-img-top" src="/static/frontend/img/raids/{{raid.name}}.jpg" alt="Card image cap">
             <hr>
             <div class="card-body">
@@ -16,6 +17,7 @@
                 <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
+        </div>
         {% endfor %}
         </div>
     </div>

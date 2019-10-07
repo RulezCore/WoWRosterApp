@@ -3,30 +3,23 @@
 {% block content %} 
 
 <div class="container" id="membersContainer">
-    <div class="row">
-        <div class="containerCards">
-          <h3>Oficiales:</h3>
-          <div class="cards">
-          {% for member in members %}
-              {% if member.rank == 'oficial' %}
-                <div class="col-sm-4">
-                  {% include "frontend/member.html" %}
-                </div>
-              {% endif %}
-          {% endfor %}
-          </div>
-        </div>
-        <div class="containerCards">
-          <h3>Raiders:</h3>
-          <div class="cards">
-          {% for member in members %}
-              {% if member.rank == 'raid' %}
-                {% include "frontend/member.html" %}
-              {% endif %}
-          {% endfor %}
-          </div>
-        </div>
+    <h3>Oficiales</h3>
+    <div class="cards row">
+      {% for member in members %}
+          {% if member.rank == 'oficial' %}
+            {% include "frontend/member.html" %}
+          {% endif %}
+      {% endfor %}
     </div>
+    <h3>Raiders</h3>
+    <div class="cards row">
+    {% for member in members %}
+        {% if member.rank == 'raid' %}
+          {% include "frontend/member.html" %}
+        {% endif %}
+    {% endfor %}
+    </div>
+  </div>
 </div>
 
 {% endblock %}

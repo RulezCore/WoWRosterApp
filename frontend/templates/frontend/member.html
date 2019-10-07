@@ -1,11 +1,15 @@
-<div class="card">
-  <div class="card-header">
-    {{member.name}} <img class="" src="/static/frontend/img/classes/{{member.clas}}.jpg" alt="Card image cap">
-  </div>
-  <div class="card-body">
-    <h5>{{member.role}}</h5>
-    <blockquote class="blockquote mb-0">
-      <p class="text-muted"> {{member.notes}}</p>
-    </blockquote>
+
+<div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+  <div class="card">
+    <div class="card-header" onClick="$('#bq{{member.id}}').fadeToggle();">
+       <img class="" src="/static/frontend/img/role/{{member.role}}.png" alt="Card image cap" width="38px">
+       <span>{{member.name}}</span>
+       <img class="" src="/static/frontend/img/classes/{{member.clas}}.jpg" alt="Card image cap">
+    </div>
+    <div class="card-body" id="bq{{member.id}}">
+      <blockquote class="blockquote mb-0">
+        <p class="text-muted"> {{member.notes}}</p>
+      </blockquote>
+    </div>
   </div>
 </div>
