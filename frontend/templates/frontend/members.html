@@ -5,17 +5,12 @@
 <div class="container" id="membersContainer">
     <div class="row">
         <div class="containerCards">
-          <h3>Oficiales</h3>
+          <h3>Oficiales:</h3>
           <div class="cards">
           {% for member in members %}
               {% if member.rank == 'oficial' %}
-                <div class="card" style="width: 18rem;">
-                  
-                  <div class="card-body">
-                      <h5 class="card-title">{{member.name}} <img src="/static/frontend/img/classes/{{member.clas}}.jpg" alt="Card image cap"></h5>
-                      <p class="card-text">{{member.notes}}</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
+                <div class="col-sm-4">
+                  {% include "frontend/member.html" %}
                 </div>
               {% endif %}
           {% endfor %}
@@ -26,14 +21,7 @@
           <div class="cards">
           {% for member in members %}
               {% if member.rank == 'raid' %}
-                <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="/static/frontend/img/classes/{{member.clas}}.jpg" alt="Card image cap">
-                  <div class="card-body">
-                      <h5 class="card-title">{{member.name}}</h5>
-                      <p class="card-text">{{member.notes}}</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
+                {% include "frontend/member.html" %}
               {% endif %}
           {% endfor %}
           </div>
