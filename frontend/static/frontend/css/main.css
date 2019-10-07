@@ -1,0 +1,117 @@
+body {
+  background: #ececec;
+}
+
+.navbar {
+  -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+#homeContainer {
+  margin-top: 50px;
+}
+
+#homeContainer #contenido {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#homeContainer #contenido p {
+  text-align: center;
+}
+
+#raidContainer {
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#raidContainer .card {
+  margin-left: 10px;
+  text-align: center;
+}
+
+#raidContainer .card hr {
+  margin: 10px;
+}
+
+#raidContainer .card .card-body {
+  padding: 10px;
+}
+
+#raidContainer .card .card-body .card-title {
+  text-transform: uppercase;
+}
+
+#raidContainer .card:first-of-type {
+  margin-left: 0;
+}
+
+#membersContainer {
+  margin-top: 50px;
+}
+
+#membersContainer .card {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#membersContainer .card .card-header {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: right;
+  font-weight: 600;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#membersContainer .card .card-header span {
+  float: right;
+}
+
+#membersContainer .card .card-header img {
+  float: left;
+}
+
+#membersContainer .card .card-header:hover {
+  -webkit-box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.2);
+}
+
+#membersContainer .card .card-body {
+  display: none;
+}
+
+#membersContainer .card .card-body blockquote {
+  font-size: 16px;
+}
+
+#membersContainer .card .card-body blockquote p {
+  margin: 0;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,8 +1,49 @@
 {% extends 'frontend/base.html' %}
 
 {% block content %} 
-    {% for member in members %}
-        <li>{{member.name}}</li>
-    {% endfor %}
-    </ul>
+
+{% comment %} MODAL {% endcomment %}
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+
+          <button type="submit">Login</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+  <div class="container" id="homeContainer">
+    <div class="row">
+      <div class="col-12" id="contenido">
+        <h2>Bienvenido al area de administracion</h2>
+        <hr>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, voluptates. Dolor sunt ratione repellendus voluptate soluta expedita, similique, aliquam quam porro magni perferendis sint. Pariatur quae veniam tenetur aliquid esse.</p>
+        <type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="buttonModal">Acceder</button>
+      </div>
+    </div>
+  </div>
+    
+{% endblock %}
+
+{% block js %}
+  <script>
+    {% if form.errors %}
+      $('#exampleModal').modal('show')
+    {% endif %}
+  </script>
 {% endblock %}

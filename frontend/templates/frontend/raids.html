@@ -1,0 +1,24 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% static "" as baseUrl %}
+
+{% block content %} 
+    <div class="container" id="raidContainer">
+        <div class="row">
+        {% for raid in raids %}
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+          <div class="card">
+            <img class="card-img-top" src="/static/frontend/img/raids/{{raid.name}}.jpg" alt="Card image cap">
+            <hr>
+            <div class="card-body">
+                <h5 class="card-title">{{raid.name}}</h5>
+                <h6 class="text-muted">{{raid.day}}</h6>
+                <p class="card-text">{{raid.notes}}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}
